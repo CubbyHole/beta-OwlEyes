@@ -11,6 +11,7 @@ require_once $projectRoot.'/required.php';
 
 $usersManager = new UserPdoManager();
 $accountManager = new AccountPdoManager();
+$planManager = new RefPlanPdoManager();
 $allUsers = $usersManager->findAll();
 
 ?>
@@ -324,7 +325,7 @@ $allUsers = $usersManager->findAll();
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-bar-chart-o"></i>
-                    <span>Plan</span>
+                    <span>Plans</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -340,7 +341,7 @@ $allUsers = $usersManager->findAll();
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="users.php"><i class="fa fa-angle-double-right"></i> List users</a></li>
-                    <li><a href="addPlan.php"><i class="fa fa-angle-double-right"></i> #</a></li>
+                    <li><a href="addUser.php"><i class="fa fa-angle-double-right"></i> Add user</a></li>
                 </ul>
             </li>
             <hr>
@@ -433,12 +434,12 @@ $allUsers = $usersManager->findAll();
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Manage plan
-            <small>add/view/edit plan</small>
+            Manage user
+            <small>add/view/edit user</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Plan</li>
+            <li class="active">Users</li>
         </ol>
     </section>
     <?php if(isset($_SESSION['addPlanMessage'])): ?>
@@ -463,7 +464,7 @@ $allUsers = $usersManager->findAll();
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Plan<a style="margin-left: 20px;" class="btn-sm btn-success" href="/OwlEyes/pages/addPlan.php"><i class="glyphicon glyphicon-plus"></i>Add plan</a></h3>
+                        <h3 class="box-title">User<a style="margin-left: 20px;" class="btn-sm btn-success" href="/OwlEyes/pages/addPlan.php"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add user</a></h3>
 
                     </div><!-- /.box-header -->
                     <div class="box-header">
@@ -474,53 +475,64 @@ $allUsers = $usersManager->findAll();
                         <table id="plan" class="table table-bordered">
                             <thead>
                             <tr>
-                                <th class="infoTitle">Firstname</th>
-                                <th class="infoTitle">Lastname</th>
+                                <th class="infoTitle">First name</th>
+                                <th class="infoTitle">Last name</th>
                                 <th class="infoTitle">Email</th>
-                                <th class="infoTitle">Geolocalisation</th>
-                                <th class="infoTitle">Registration date</th>
-                                <th class="infoTitle">End date</th>
-                                <th class="infoTitle">Plans</th>
+                                <th class="infoTitle">Geolocation</th>
+                                <th class="infoTitle">SD of CA<i data-title="Start date of current account" class="fa fa-info-circle infoIcone"></i></th>
+                                <th class="infoTitle">ED of CA<i data-title="End date of current account" class="fa fa-info-circle infoIcone"></i></th>
+                                <th class="infoTitle">Plan</th>
                                 <th class="infoTitle">State</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach($allUsers as $users): ?>
-                                <?php if($users->getState() == 0): ?>
+                            <?php foreach($allUsers as $user):
+                                $account = $accountManager->findById($user->getCurrentAccount()); ?>
+                                <?php if($account->getState() == 0): ?>
                                     <tr style="background: #d9534f;;">
                                 <?php endif ?>
-                                <td class="infoName"><?= $users->getFirstName() ?></td>
-                                <td class="infoPrice"><?= $users->getLastName() ?></td>
-                                <td class="infoStorage"><?= $users->getEmail() ?></td>
-                                <td class="infoDL"><?= $users->getGeolocation() ?></td>
-                                <td class="info"><?= $users->getCurrentAccount()->getStartDate() ?></td>
-                                <td class="info"><?= $users->getCurrentAccount()->getEndDate() ?></td>
-                                <td class="info"><?= $users->getState() ?></td>
+                                <td class="infoName"><?= $user->getFirstName() ?></td>
+                                <td class="infoPrice"><?= $user->getLastName() ?></td>
+                                <td class="infoStorage"><?= $user->getEmail() ?></td>
+                                <td class="infoDL"><?= $user->getGeolocation() ?></td>
+                                <?php
+
+                                if($account instanceof Account)
+                                {
+                                    $startDateArray = $accountManager->formatMongoDate($account->getStartDate());
+                                    $endDateArray = $accountManager->formatMongoDate($account->getEndDate());
+                                    $plan = $planManager->findById($account->getRefPlan());
+                                }
+
+                                ?>
+                                <td class="info"><?= $startDateArray['date']; ?></td>
+                                <td class="info"><?= $endDateArray['date']; ?></td>
+                                <td class="info"><?= $plan->getName() ?></td>
+                                <td class="info"><?= $account->getState() ?></td>
                                 <td>
-                                    <a name="editPlan" type="submit" href="/OwlEyes/pages/editPlan.php?id=<?= $plan->getId() ?>" class="editPlan btn btn-warning btn-xs">
+                                    <a name="editPlan" type="submit" href="/OwlEyes/pages/editUser.php?id=<?= $account->getId() ?>" class="editUser btn btn-warning btn-xs">
                                         <span class="glyphicon glyphicon-cog"></span>
                                     </a>
-                                    <?php if($plan->getState() == 1): ?>
-                                        <a  href="/OwlEyes/controller/disablePlan.php?id=<?= $plan->getId() ?>" type="button" class="disablePlan btn btn-danger btn-xs">
+                                    <?php if($user->getState() == 1): ?>
+                                        <a  href="/OwlEyes/controller/disableUser.php?id=<?= $account->getId() ?>" type="button" class="disableUser btn btn-danger btn-xs">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </a>
                                     <?php endif ?>
-
                                 </td>
                                 </tr>
-
                             <?php endforeach ?>
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Max storage</th>
-                                <th>Download speed</th>
-                                <th>Upload speed</th>
-                                <th>Max ratio</th>
-                                <th>State</th>
+                                <th class="infoTitle">Firstname</th>
+                                <th class="infoTitle">Lastname</th>
+                                <th class="infoTitle">Email</th>
+                                <th class="infoTitle">Geolocation</th>
+                                <th class="infoTitle">Registration date</th>
+                                <th class="infoTitle">End date</th>
+                                <th class="infoTitle">Plans</th>
+                                <th class="infoTitle">State</th>
                                 <th>Action</th>
                             </tr>
                             </tfoot>
@@ -560,7 +572,7 @@ $allUsers = $usersManager->findAll();
         });
 
         // Alerte de suppression d'un job
-        $( '.disablePlan' ).on( 'click', function( e )
+        $( '.disableUser' ).on( 'click', function( e )
         {
             if( confirm( 'Voulez vous supprimer cette offre ?' ) )
                 return true;
@@ -570,6 +582,10 @@ $allUsers = $usersManager->findAll();
 
 //        $("#managePlan").css({'display':'none'});
         $("#managePlan").hide();
+
+        $(".infoIcone").tooltip({
+            position: top
+        })
 
 
         // Scroll to add comment form

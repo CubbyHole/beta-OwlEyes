@@ -323,7 +323,7 @@ $allPlan = $planManager->findAll();
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-bar-chart-o"></i>
-                    <span>Plan</span>
+                    <span>Plans</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -339,7 +339,7 @@ $allPlan = $planManager->findAll();
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="users.php"><i class="fa fa-angle-double-right"></i> List users</a></li>
-                    <li><a href="addPlan.php"><i class="fa fa-angle-double-right"></i> #</a></li>
+                    <li><a href="addUser.php"><i class="fa fa-angle-double-right"></i> Add user</a></li>
                 </ul>
             </li>
             <hr>
@@ -462,7 +462,7 @@ $allPlan = $planManager->findAll();
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Plan<a style="margin-left: 20px;" class="btn-sm btn-success" href="/OwlEyes/pages/addPlan.php"><i class="glyphicon glyphicon-plus"></i>Add plan</a></h3>
+                        <h3 class="box-title">Plan<a style="margin-left: 20px;" class="btn-sm btn-success" href="/OwlEyes/pages/addPlan.php"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add plan</a></h3>
 
                     </div><!-- /.box-header -->
                     <div class="box-header">

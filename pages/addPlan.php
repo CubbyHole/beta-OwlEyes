@@ -354,7 +354,7 @@ if (!empty($allPlan))
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="users.php"><i class="fa fa-angle-double-right"></i> List users</a></li>
-                    <li><a href="addPlan.php"><i class="fa fa-angle-double-right"></i> #</a></li>
+                    <li><a href="addUser.php"><i class="fa fa-angle-double-right"></i> Add user</a></li>
                 </ul>
             </li>
             <hr>

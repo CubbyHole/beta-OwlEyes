@@ -322,11 +322,29 @@ $countUser = count($allUser);
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="pages/plan.php">
-                                <i class="fa fa-th"></i> <span>Plan</span>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-bar-chart-o"></i>
+                                <span>Plan</span>
+                                <i class="fa fa-angle-left pull-right"></i>
                             </a>
+                            <ul class="treeview-menu">
+                                <li><a href="pages/plan.php"><i class="fa fa-angle-double-right"></i> List plan</a></li>
+                                <li><a href="pages/addPlan.php"><i class="fa fa-angle-double-right"></i> Add plan</a></li>
+                            </ul>
                         </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-users"></i>
+                                <span>Users</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="pages/users.php"><i class="fa fa-angle-double-right"></i> List users</a></li>
+                                <li><a href="pages/addUser.php"><i class="fa fa-angle-double-right"></i> Add user</a></li>
+                            </ul>
+                        </li>
+                        <hr>
                         <li>
                             <a href="pages/widgets.php">
                                 <i class="fa fa-th"></i> <span>Widgets</span> <small class="badge pull-right bg-green">new</small>

@@ -41,7 +41,7 @@
 
                     <button type="submit" class="btn bg-olive btn-block">Sign me up</button>
 
-                    <a href="login.php" class="text-center">I already have a membership</a>
+                    <a href="../login.php" class="text-center">I already have a membership</a>
                 </div>
             </form>
 

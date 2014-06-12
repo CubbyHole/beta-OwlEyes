@@ -50,7 +50,7 @@
             </div><!-- /.lockscreen-item -->
 
             <div class="lockscreen-link">
-                <a href="login.php">Or sign in as a different user</a>
+                <a href="../login.php">Or sign in as a different user</a>
             </div>            
         </div><!-- /.center -->
 

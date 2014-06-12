@@ -1,15 +1,18 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html class="bg-black">
     <head>
         <meta charset="UTF-8">
-        <title>AdminLTE | Log in</title>
+        <title>OwlEyes | Log in</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
-        <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
-        <link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
-        <link href="../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <link href="../css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,27 +22,34 @@
         <![endif]-->
     </head>
     <body class="bg-black">
-
+<?php if(isset($_SESSION['errorMessageLogin'])): ?>
+    <div class="alert alert-danger alert-dismissable" style="margin-left: 0">
+<!--        <i class="fa fa-ban"></i>-->
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <?= $_SESSION['errorMessageLogin'] ?>
+        <?php unset($_SESSION['errorMessageLogin']) ?>
+    </div>
+<?php endif ?>
         <div class="form-box" id="login-box">
             <div class="header">Sign In</div>
-            <form action="../../index.php" method="post">
+            <form action="../controller/login.php" method="POST">
                 <div class="body bg-gray">
                     <div class="form-group">
-                        <input type="text" name="userid" class="form-control" placeholder="User ID"/>
+                        <input type="text" name="email" class="form-control" placeholder="Email"/>
                     </div>
                     <div class="form-group">
                         <input type="password" name="password" class="form-control" placeholder="Password"/>
                     </div>          
-                    <div class="form-group">
-                        <input type="checkbox" name="remember_me"/> Remember me
-                    </div>
+<!--                    <div class="form-group">-->
+<!--                        <input type="checkbox" name="remember_me"/> Remember me-->
+<!--                    </div>-->
                 </div>
                 <div class="footer">                                                               
-                    <button type="submit" class="btn bg-olive btn-block">Sign me in</button>  
+                    <input name="loginForm" type="submit" class="btn bg-olive btn-block" value="Sign me in">
                     
-                    <p><a href="#">I forgot my password</a></p>
+<!--                    <p><a href="#">I forgot my password</a></p>-->
                     
-                    <a href="register.php" class="text-center">Register a new membership</a>
+<!--                    <a href="examples/register.php" class="text-center">Register a new membership</a>-->
                 </div>
             </form>
 
@@ -57,7 +67,7 @@
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <!-- Bootstrap -->
-        <script src="../../js/bootstrap.min.js" type="text/javascript"></script>        
+        <script src="../js/bootstrap.min.js" type="text/javascript"></script>
 
     </body>
 </html>

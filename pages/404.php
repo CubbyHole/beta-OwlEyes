@@ -2,16 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>AdminLTE | 500 Error</title>
+        <title>AdminLTE | 404 Page not found</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
-        <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
-        <link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
-        <link href="../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
-        <link href="../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <link href="../css/AdminLTE.css" rel="stylesheet" type="text/css" />
         
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,7 +23,7 @@
     <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="../../index.php" class="logo">
+            <a href="../index.php" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 AdminLTE
             </a>
@@ -52,7 +52,7 @@
                                         <li><!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="../../img/avatar3.png" class="img-circle" alt="User Image"/>
+                                                    <img src="../img/avatar3.png" class="img-circle" alt="User Image"/>
                                                 </div>
                                                 <h4>
                                                     Support Team
@@ -64,7 +64,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="../../img/avatar2.png" class="img-circle" alt="user image"/>
+                                                    <img src="../img/avatar2.png" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     AdminLTE Design Team
@@ -76,7 +76,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="../../img/avatar.png" class="img-circle" alt="user image"/>
+                                                    <img src="../img/avatar.png" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Developers
@@ -88,7 +88,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="../../img/avatar2.png" class="img-circle" alt="user image"/>
+                                                    <img src="../img/avatar2.png" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Sales Department
@@ -100,7 +100,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="../../img/avatar.png" class="img-circle" alt="user image"/>
+                                                    <img src="../img/avatar.png" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Reviewers
@@ -235,7 +235,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    <img src="../../img/avatar3.png" class="img-circle" alt="User Image" />
+                                    <img src="../img/avatar3.png" class="img-circle" alt="User Image" />
                                     <p>
                                         Jane Doe - Web Developer
                                         <small>Member since Nov. 2012</small>
@@ -276,7 +276,7 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="../../img/avatar3.png" class="img-circle" alt="User Image" />
+                            <img src="../img/avatar3.png" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
                             <p>Hello, Jane</p>
@@ -297,12 +297,12 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="../../index.php">
+                            <a href="../index.php">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../widgets.php">
+                            <a href="widgets.php">
                                 <i class="fa fa-th"></i> <span>Widgets</span> <small class="badge pull-right bg-green">new</small>
                             </a>
                         </li>
@@ -313,9 +313,9 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../charts/morris.php"><i class="fa fa-angle-double-right"></i> Morris</a></li>
-                                <li><a href="../charts/flot.php"><i class="fa fa-angle-double-right"></i> Flot</a></li>
-                                <li><a href="../charts/inline.php"><i class="fa fa-angle-double-right"></i> Inline charts</a></li>
+                                <li><a href="charts/morris.php"><i class="fa fa-angle-double-right"></i> Morris</a></li>
+                                <li><a href="charts/flot.php"><i class="fa fa-angle-double-right"></i> Flot</a></li>
+                                <li><a href="charts/inline.php"><i class="fa fa-angle-double-right"></i> Inline charts</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -325,11 +325,11 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../UI/general.php"><i class="fa fa-angle-double-right"></i> General</a></li>
-                                <li><a href="../UI/icons.php"><i class="fa fa-angle-double-right"></i> Icons</a></li>
-                                <li><a href="../UI/buttons.php"><i class="fa fa-angle-double-right"></i> Buttons</a></li>
-                                <li><a href="../UI/sliders.php"><i class="fa fa-angle-double-right"></i> Sliders</a></li>
-                                <li><a href="../UI/timeline.php"><i class="fa fa-angle-double-right"></i> Timeline</a></li>
+                                <li><a href="UI/general.php"><i class="fa fa-angle-double-right"></i> General</a></li>
+                                <li><a href="UI/icons.php"><i class="fa fa-angle-double-right"></i> Icons</a></li>
+                                <li><a href="UI/buttons.php"><i class="fa fa-angle-double-right"></i> Buttons</a></li>
+                                <li><a href="UI/sliders.php"><i class="fa fa-angle-double-right"></i> Sliders</a></li>
+                                <li><a href="UI/timeline.php"><i class="fa fa-angle-double-right"></i> Timeline</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -338,9 +338,9 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../forms/general.php"><i class="fa fa-angle-double-right"></i> General Elements</a></li>
-                                <li><a href="../forms/advanced.php"><i class="fa fa-angle-double-right"></i> Advanced Elements</a></li>
-                                <li><a href="../forms/editors.php"><i class="fa fa-angle-double-right"></i> Editors</a></li>                                
+                                <li><a href="forms/general.php"><i class="fa fa-angle-double-right"></i> General Elements</a></li>
+                                <li><a href="forms/advanced.php"><i class="fa fa-angle-double-right"></i> Advanced Elements</a></li>
+                                <li><a href="forms/editors.php"><i class="fa fa-angle-double-right"></i> Editors</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -349,18 +349,18 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../tables/simple.php"><i class="fa fa-angle-double-right"></i> Simple tables</a></li>
-                                <li><a href="../tables/data.php"><i class="fa fa-angle-double-right"></i> Data tables</a></li>
+                                <li><a href="tables/simple.php"><i class="fa fa-angle-double-right"></i> Simple tables</a></li>
+                                <li><a href="tables/data.php"><i class="fa fa-angle-double-right"></i> Data tables</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="../calendar.php">
+                            <a href="calendar.php">
                                 <i class="fa fa-calendar"></i> <span>Calendar</span>
                                 <small class="badge pull-right bg-red">3</small>
                             </a>
                         </li>
                         <li>
-                            <a href="../mailbox.php">
+                            <a href="mailbox.php">
                                 <i class="fa fa-envelope"></i> <span>Mailbox</span>
                                 <small class="badge pull-right bg-yellow">12</small>
                             </a>
@@ -371,13 +371,13 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="invoice.php"><i class="fa fa-angle-double-right"></i> Invoice</a></li>
+                                <li><a href="examples/invoice.php"><i class="fa fa-angle-double-right"></i> Invoice</a></li>
                                 <li><a href="login.php"><i class="fa fa-angle-double-right"></i> Login</a></li>
-                                <li><a href="register.php"><i class="fa fa-angle-double-right"></i> Register</a></li>
-                                <li><a href="lockscreen.php"><i class="fa fa-angle-double-right"></i> Lockscreen</a></li>
-                                <li><a href="404.php"><i class="fa fa-angle-double-right"></i> 404 Error</a></li>
-                                <li class="active"><a href="500.php"><i class="fa fa-angle-double-right"></i> 500 Error</a></li>                                
-                                <li><a href="blank.php"><i class="fa fa-angle-double-right"></i> Blank Page</a></li>
+                                <li><a href="examples/register.php"><i class="fa fa-angle-double-right"></i> Register</a></li>
+                                <li><a href="examples/lockscreen.php"><i class="fa fa-angle-double-right"></i> Lockscreen</a></li>
+                                <li class="active"><a href="404.php"><i class="fa fa-angle-double-right"></i> 404 Error</a></li>
+                                <li><a href="500.php"><i class="fa fa-angle-double-right"></i> 500 Error</a></li>                                
+                                <li><a href="examples/blank.php"><i class="fa fa-angle-double-right"></i> Blank Page</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -390,12 +390,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        500 Error Page
+                        404 Error Page
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                         <li><a href="#">Examples</a></li>
-                        <li class="active">500 error</li>
+                        <li class="active">404 error</li>
                     </ol>
                 </section>
 
@@ -403,22 +403,22 @@
                 <section class="content">
                  
                     <div class="error-page">
-                        <h2 class="headline">500</h2>
+                        <h2 class="headline text-info"> 404</h2>
                         <div class="error-content">
-                            <h3><i class="fa fa-warning text-yellow"></i> Oops! Something went wrong.</h3>
+                            <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
                             <p>
-                                We will work on fixing that right away. 
-                                Meanwhile, you may <a href='../../index.php'>return to dashboard</a> or try using the search form.
+                                We could not find the page you were looking for. 
+                                Meanwhile, you may <a href='../index.php'>return to dashboard</a> or try using the search form.
                             </p>
                             <form class='search-form'>
                                 <div class='input-group'>
                                     <input type="text" name="search" class='form-control' placeholder="Search"/>
                                     <div class="input-group-btn">
-                                        <button type="submit" name="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
+                                        <button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                                     </div>
                                 </div><!-- /.input-group -->
                             </form>
-                        </div>
+                        </div><!-- /.error-content -->
                     </div><!-- /.error-page -->
 
                 </section><!-- /.content -->
@@ -429,9 +429,9 @@
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <!-- Bootstrap -->
-        <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
-        <script src="../../js/AdminLTE/app.js" type="text/javascript"></script>
+        <script src="../js/AdminLTE/app.js" type="text/javascript"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="js/AdminLTE/demo.js" type="text/javascript"></script>
     </body>

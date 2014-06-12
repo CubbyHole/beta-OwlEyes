@@ -372,11 +372,11 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="examples/invoice.php"><i class="fa fa-angle-double-right"></i> Invoice</a></li>
-                                <li><a href="examples/login.php"><i class="fa fa-angle-double-right"></i> Login</a></li>
+                                <li><a href="login.php"><i class="fa fa-angle-double-right"></i> Login</a></li>
                                 <li><a href="examples/register.php"><i class="fa fa-angle-double-right"></i> Register</a></li>
                                 <li><a href="examples/lockscreen.php"><i class="fa fa-angle-double-right"></i> Lockscreen</a></li>
-                                <li><a href="examples/404.php"><i class="fa fa-angle-double-right"></i> 404 Error</a></li>
-                                <li><a href="examples/500.php"><i class="fa fa-angle-double-right"></i> 500 Error</a></li>                                
+                                <li><a href="404.php"><i class="fa fa-angle-double-right"></i> 404 Error</a></li>
+                                <li><a href="500.php"><i class="fa fa-angle-double-right"></i> 500 Error</a></li>
                                 <li><a href="examples/blank.php"><i class="fa fa-angle-double-right"></i> Blank Page</a></li>
                             </ul>
                         </li>

@@ -7,20 +7,27 @@
  */
 include '../header/header.php';
 
-
 if(isset($_GET['id']))
 {
-    $id = $_GET['id'];
-    var_dump($id);
+    $id = $_GET['id'];//récupère l'id passser en url
 }
 
-
-
+$accountManager = new AccountPdoManager();
+$userManager = new UserPdoManager();
 $planManager = new RefPlanPdoManager();
 
-$plan = $planManager->findById($id);
+$account = $accountManager->findById($id);//id account
+$accountUser = $account->getUser();//id user
+$plan = $planManager->findById($account->getRefPlan());//id du plan
+
+$startDateArray = $accountManager->formatMongoDate($account->getStartDate());
+$endDateArray = $accountManager->formatMongoDate($account->getEndDate());
+
+//récupère la collection user via id
+$user = $userManager->findById($accountUser);
 include '../header/menu.php';
 ?>
+
     <!-- bootstrap 3.0.2 -->
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- font Awesome -->
@@ -40,20 +47,18 @@ include '../header/menu.php';
     <![endif]-->
 </head>
 
-
-
 <!-- Right side column. Contains the navbar and content of the page -->
 
 <aside class="right-side">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Manage plan
-            <small>add/view/edit plan</small>
+            Manage user
+            <small>add/view/edit user</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Plan</li>
+            <li class="active">Edit user</li>
         </ol>
     </section>
 
@@ -63,50 +68,56 @@ include '../header/menu.php';
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Edit Plan</h3>
+                        <h3 class="box-title">Edit User </h3>
                     </div><!-- /.box-header -->
                     <div class="box-body table-responsive">
-                        <form  class="form-horizontal" role="form" method="POST" action="../controller/editPlan.php?id=<?= $plan->getId() ?>">
+                        <form  class="form-horizontal" role="form" method="POST" action="../controller/editUser.php?id=<?= $account->getId() ?>">
                             <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label">Name</label>
+                                <label for="firstname" class="col-sm-2 control-label">First name</label>
                                 <div class="col-sm-2">
-                                    <input name="name" type="text" class="form-control" id="name" placeholder="Name" value="<?= $plan->getName() ?>">
+                                    <input name="firstname" type="text" class="form-control" id="firstname" placeholder="First name" value="<?= $user->getFirstName() ?>">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="price" class="col-sm-2 control-label">Price</label>
+                                <label for="lastname" class="col-sm-2 control-label">Last name</label>
                                 <div class="col-sm-2">
-                                    <input name="price" type="number" class="form-control" id="price" placeholder="Price" value="<?= $plan->getPrice() ?>">
+                                    <input name="lastname" type="text" class="form-control" id="lastname" placeholder="Last name" value="<?= $user->getLastName() ?>">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="maxStorage" class="col-sm-2 control-label">Max storage(Mb)</label>
+                                <label for="email" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-2">
-                                    <input name="maxStorage" type="number" class="form-control" id="maxStorage" placeholder="Maximum storage" value="<?= $plan->getMaxStorage() ?>">
+                                    <input name="email" type="text" class="form-control" id="email" placeholder="Email" value="<?= $user->getEmail() ?>">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="downL" class="col-sm-2 control-label">Download speed(Kb)</label>
+                                <label for="geo" class="col-sm-2 control-label">Geolocation</label>
                                 <div class="col-sm-2">
-                                    <input name="downL" type="number" class="form-control" id="downL" placeholder="Download speed" value="<?= $plan->getDownloadSpeed() ?>">
+                                    <input name="geo" type="text" class="form-control" id="geo" placeholder="Geolocation" value="<?= $user->getGeolocation() ?>">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="upL" class="col-sm-2 control-label">Upload speed(Kb)</label>
+                                <label for="startDate" class="col-sm-2 control-label">Start date</label>
                                 <div class="col-sm-2">
-                                    <input name="upL" type="number" class="form-control" id="upL" placeholder="Upload speed" value="<?= $plan->getUploadSpeed() ?>">
+                                    <input name="startDate" type="text" class="form-control" id="startDate" placeholder="Start date" value="<?= $startDateArray['date'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="maxRatio" class="col-sm-2 control-label">Max ratio</label>
+                                <label for="endDate" class="col-sm-2 control-label">End date</label>
                                 <div class="col-sm-2">
-                                    <input name="maxRatio" type="number" class="form-control" id="maxRatio" placeholder="Maximum ratio" value="<?= $plan->getMaxRatio() ?>">
+                                    <input name="endDate" type="text" class="form-control" id="endDate" placeholder="End date" value="<?= $endDateArray['date'] ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="plan" class="col-sm-2 control-label">Plan</label>
+                                <div class="col-sm-2">
+                                    <input name="plan" type="text" class="form-control" id="plan" placeholder="Plan" value="<?= $plan->getName() ?>">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <input  name="edit_plan" class="btn btn-success" type="submit">
+                                    <input  name="edit_user" class="btn btn-success" type="submit">
                                 </div>
                             </div>
                         </form>
@@ -131,28 +142,8 @@ include '../header/menu.php';
 <script src="../js/AdminLTE/demo.js" type="text/javascript"></script>
 <!-- page script -->
 <script type="text/javascript">
-    $(function() {
-        $("#example1").dataTable({
-        });
-        $('#plan').dataTable({
-//            "bPaginate": true,
-//            "bLengthChange": false,
-//            "bFilter": false,
-//            "bSort": true,
-//            "bInfo": true,
-//            "bAutoWidth": false
-        });
+    $(function(){
 
-        // Alerte de suppression d'un job
-        $( '.disablePlan' ).on( 'click', function( e )
-        {
-            if( confirm( 'Voulez vous supprimer cette offre ?' ) )
-                return true;
-
-            return false;
-        });
-
-    });
 
     });
 </script>

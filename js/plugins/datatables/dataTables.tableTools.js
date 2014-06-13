@@ -3064,7 +3064,6 @@ var TableTools;
             alert( "Warning: TableTools 2 requires DataTables 1.9.0 or newer - www.datatables.net/download");
         }
 
-
         $.fn.dataTable.TableTools = TableTools;
         $.fn.DataTable.TableTools = TableTools;
 

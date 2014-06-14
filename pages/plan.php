@@ -20,6 +20,9 @@ include '../header/menu.php';
     <link href="../css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- DATA TABLES -->
     <link href="../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../css/datatables/dataTables.tableTools.css" rel="stylesheet" type="text/css" />
+<!--    <link href="../css/datatables/jquery.dataTables.css" rel="stylesheet" type="text/css" />-->
+
     <!-- Theme style -->
     <link href="../css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
@@ -28,6 +31,7 @@ include '../header/menu.php';
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <embed src="/OwlEyes/swf/copy_csv_xls_pdf.swf">
     <![endif]-->
 </head>
 
@@ -139,27 +143,36 @@ include '../header/menu.php';
 <!-- jQuery 2.0.2 -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../js/bootstrap.min.js"></script>
 <!-- DATA TABES SCRIPT -->
-<script src="../js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-<script src="../js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="../js/plugins/datatables/jquery.dataTables.js"></script>
+<script src="../js/plugins/datatables/dataTables.bootstrap.js" ></script>
+<script src="../js/plugins/datatables/dataTables.tableTools.js"></script>
 <!-- AdminLTE App -->
 <script src="../js/AdminLTE/app.js" type="text/javascript"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../js/AdminLTE/demo.js" type="text/javascript"></script>
 <!-- page script -->
 <script type="text/javascript">
+    $(document).ready( function () {
+        $('#plan').dataTable( {
+            "sDom": 'T<"clear">lfrtip',
+            "oTableTools": {
+
+                "aButtons": [
+                    "copy",
+                    {
+                        "sExtends":    "collection",
+                        "sButtonText": "Export",
+                        "aButtons":    [ "csv", "xls", "pdf", "print" ]
+                    }
+                ]
+            }
+        } );
+    } );
+
     $(function() {
-        $("#example1").dataTable({
-        });
-        $('#plan').dataTable({
-//            "bPaginate": true,
-//            "bLengthChange": false,
-//            "bFilter": false,
-//            "bSort": true,
-//            "bInfo": true,
-//            "bAutoWidth": false
-        });
+
 
         // Alerte de suppression d'un plan
         $( '.disablePlan' ).on( 'click', function( e )

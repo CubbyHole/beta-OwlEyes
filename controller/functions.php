@@ -132,6 +132,21 @@ function getGravatar($email, $size = 60, $default = 'mm', $rating = 'g', $img = 
     return $url;
 }
 
+function _cleanInput($data)
+{
+
+    $search = array(
+        '@<script[^>]*?>.*?</script>@si',   // Retire code Javascript
+        '@<[\/\!]*?[^<>]*?>@si',            // Retire code HTML
+        '@<style[^>]*?>.*?</style>@siU',    // Retire code CSS
+        '@<![\s\S]*?--[ \t\n\r]*>@'         // Retire les lignes de commentaires multiples
+    );
+
+    $output = preg_replace($search, '', $data);
+
+    return $output;
+}
+
 /**
  * Pour protéger la base de données. Fait appel à cleanInput($data) si $data n'est pas un tableau.
  * @author Alban Truc

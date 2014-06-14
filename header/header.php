@@ -27,13 +27,14 @@ if(isset($_SESSION['owleyesOK']))
 }
 else
 {
-    header('Location:pages/login.php');
+    header('Location:/OwlEyes/pages/login.php');
 }
 ?>
 <!DOCTYPE html>
 <html>
-    <head>xdvsrvs
+    <head>
         <meta charset="UTF-8">
         <title>Owl Eyes | Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <link rel="shortcut icon" href="/OwlEyes/img/icons/icons.png">
 

@@ -22,6 +22,7 @@ include '../header/menu.php';
     <link href="../css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- DATA TABLES -->
     <link href="../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../css/datatables/dataTables.tableTools.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="../css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
@@ -30,6 +31,7 @@ include '../header/menu.php';
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <embed src="/OwlEyes/swf/copy_csv_xls_pdf.swf">
     <![endif]-->
 </head>
 
@@ -60,6 +62,27 @@ include '../header/menu.php';
             <?= $_SESSION['editPlanMessage'] ?>
             <?php unset($_SESSION['editPlanMessage']) ?>
         </div>
+    <?php elseif(isset($_SESSION['editUserMessage'])): ?>
+        <div class="alert alert-success alert-dismissable">
+            <i class="fa fa-check"></i>
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <?= $_SESSION['editUserMessage'] ?>
+            <?php unset($_SESSION['editUserMessage']) ?>
+        </div>
+     <?php elseif(isset($_SESSION['editUserInvalidMessage'])): ?>
+        <div class="alert alert-danger alert-dismissable">
+            <i class="fa fa-ban"></i>
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <?= $_SESSION['editUserInvalidMessage'] ?>
+            <?php unset($_SESSION['editUserInvalidMessage']) ?>
+        </div>
+        <?php elseif(isset($_SESSION['addUserMessage'])): ?>
+        <div class="alert alert-success alert-dismissable">
+            <i class="fa fa-check"></i>
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <?= $_SESSION['addUserMessage'] ?>
+            <?php unset($_SESSION['addUserMessage']) ?>
+        </div>
     <?php endif ?>
 
     <!-- Main content Plan -->
@@ -68,7 +91,7 @@ include '../header/menu.php';
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">User<a style="margin-left: 20px;" class="btn-sm btn-success" href="/OwlEyes/pages/addPlan.php"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add user</a></h3>
+                        <h3 class="box-title">User<a style="margin-left: 20px;" class="btn-sm btn-success" href="/OwlEyes/pages/addUser.php"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add user</a></h3>
 
                     </div><!-- /.box-header -->
                     <div class="box-header">
@@ -76,15 +99,15 @@ include '../header/menu.php';
 
                     </div>
                     <div class="box-body table-responsive">
-                        <table id="plan" class="table table-bordered">
+                        <table id="users" class="table table-bordered">
                             <thead>
                             <tr>
                                 <th class="infoTitle">First name</th>
                                 <th class="infoTitle">Last name</th>
                                 <th class="infoTitle">Email</th>
                                 <th class="infoTitle">Geolocation</th>
-                                <th class="infoTitle">SD of CA<i data-title="Start date of current account" class="fa fa-info-circle infoIcone"></i></th>
-                                <th class="infoTitle">ED of CA<i data-title="End date of current account" class="fa fa-info-circle infoIcone"></i></th>
+                                <th class="infoTitle">SD of CA<i data-toggle="tooltip" data-title="Start date of current account" class="fa fa-info-circle infoIcone"></i></th>
+                                <th class="infoTitle">ED of CA<i data-toggle="tooltip" data-title="End date of current account" class="fa fa-info-circle infoIcone"></i></th>
                                 <th class="infoTitle">Plan</th>
                                 <th class="infoTitle">State</th>
                                 <th>Action</th>
@@ -92,10 +115,16 @@ include '../header/menu.php';
                             </thead>
                             <tbody>
                             <?php foreach($allUsers as $user):
-                                $account = $accountManager->findById($user->getCurrentAccount()); ?>
+                                $account = $accountManager->findById($user->getCurrentAccount());
+                                $user = $account->getUser();
+                                $user = $usersManager->findById($user);
+                                 ?>
                                 <?php if($account->getState() == 0): ?>
-                                    <tr style="background: #d9534f;;">
+                                    <tr style="background: #d9534f;">
+                                <?php elseif($user->getIsAdmin() == TRUE): ?>
+                                    <tr style="background: #b5d983;">
                                 <?php endif ?>
+
                                 <td class="infoName"><?= $user->getFirstName() ?></td>
                                 <td class="infoPrice"><?= $user->getLastName() ?></td>
                                 <td class="infoStorage"><?= $user->getEmail() ?></td>
@@ -157,12 +186,29 @@ include '../header/menu.php';
 <!-- DATA TABES SCRIPT -->
 <script src="../js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
 <script src="../js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="../js/plugins/datatables/dataTables.tableTools.js"></script>
 <!-- AdminLTE App -->
 <script src="../js/AdminLTE/app.js" type="text/javascript"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../js/AdminLTE/demo.js" type="text/javascript"></script>
 <!-- page script -->
 <script type="text/javascript">
+    $(document).ready( function () {
+        $('#users').dataTable( {
+            "sDom": 'T<"clear">lfrtip',
+            "oTableTools": {
+
+                "aButtons": [
+                    "copy",
+                    {
+                        "sExtends":    "collection",
+                        "sButtonText": "Export",
+                        "aButtons":    [ "csv", "xls", "pdf", "print" ]
+                    }
+                ]
+            }
+        } );
+    } );
     $(function() {
         $("#example1").dataTable({
         });
@@ -178,7 +224,7 @@ include '../header/menu.php';
         // Alerte de suppression d'un job
         $( '.disableUser' ).on( 'click', function( e )
         {
-            if( confirm( 'Voulez vous supprimer cette offre ?' ) )
+            if( confirm( 'Want to disabled this account ?' ) )
                 return true;
 
             return false;
@@ -187,7 +233,7 @@ include '../header/menu.php';
 //        $("#managePlan").css({'display':'none'});
         $("#managePlan").hide();
 
-        $(".infoIcone").tooltip({
+        $("[data-toggle='tooltip']").tooltip({
             position: top
         })
 

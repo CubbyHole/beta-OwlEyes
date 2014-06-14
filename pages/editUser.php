@@ -12,13 +12,11 @@ if(isset($_GET['id']))
     $id = $_GET['id'];//récupère l'id passser en url
 }
 
-$accountManager = new AccountPdoManager();
-$userManager = new UserPdoManager();
-$planManager = new RefPlanPdoManager();
-
 $account = $accountManager->findById($id);//id account
 $accountUser = $account->getUser();//id user
-$plan = $planManager->findById($account->getRefPlan());//id du plan
+$currentPlan = $planManager->findById($account->getRefPlan());//id du plan
+
+$allplan = $planManager->findAll();
 
 $startDateArray = $accountManager->formatMongoDate($account->getStartDate());
 $endDateArray = $accountManager->formatMongoDate($account->getEndDate());
@@ -85,6 +83,12 @@ include '../header/menu.php';
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="password" class="col-sm-2 control-label">Password</label>
+                                <div class="col-sm-2">
+                                    <input name="password" type="text" class="form-control" id="password" placeholder="Password" value="<?= $user->getPassword() ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="email" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-2">
                                     <input name="email" type="text" class="form-control" id="email" placeholder="Email" value="<?= $user->getEmail() ?>">
@@ -108,11 +112,20 @@ include '../header/menu.php';
                                     <input name="endDate" type="text" class="form-control" id="endDate" placeholder="End date" value="<?= $endDateArray['date'] ?>">
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <label for="plan" class="col-sm-2 control-label">Plan</label>
+                                <label class="col-sm-2 control-label">Plan</label>
                                 <div class="col-sm-2">
-                                    <input name="plan" type="text" class="form-control" id="plan" placeholder="Plan" value="<?= $plan->getName() ?>">
-                                </div>
+                                <select name="plan" class="form-control">
+                                    <?php foreach($allplan as $plan):
+                                        $account = $accountManager->findById($id);//id account
+                                        $accountUser = $account->getUser();//id user
+                                        $cplan = $planManager->findById($account->getRefPlan());//id du plan
+                                        ?>
+                                            <option value="<?= $plan->getId() ?>" ><?= $plan->getName() ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                                    </div>
                             </div>
 
                             <div class="form-group">

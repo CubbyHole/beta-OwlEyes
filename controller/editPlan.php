@@ -38,18 +38,7 @@ if(isset($_POST['edit_plan']))
             'maxRatio' => new MongoInt32($maxRatio),
             'state' => new MongoInt32(1))
         );
-//        $updatePlan = array(
-//            '$set' => array('name' => $name)
-//        );
-        $fields = array(
-            'name' => $name,
-            'price' => new MongoInt32($price),
-            'maxStorage' => new MongoInt32($maxStorage),
-            'downloadSpeed' => new MongoInt32($dl),
-            'uploadSpeed' => new MongoInt32($up),
-            'maxRatio' => new MongoInt32($maxRatio),
-            'state' => new MongoInt32(1)
-        );
+
         $options = array('new' => true);
 
         $editPlan = $refPlanManager->findAndModify($criteria, $updatePlan, null, $options);

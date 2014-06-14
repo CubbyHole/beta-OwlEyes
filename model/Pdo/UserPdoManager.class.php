@@ -459,5 +459,24 @@ class UserPdoManager extends AbstractPdoManager implements UserManagerInterface{
             return array('error' => $errorInfo);
         }
     }
+
+    /**
+     * Vérifier la disponibilité d'une adresse e-mail
+     * @author Alban Truc
+     * @param string $email
+     * @since 02/2014
+     * @return bool FALSE si email déjà prise, TRUE sinon
+     */
+
+    public function checkEmailAvailability($email)
+    {
+        $query = array('email' => $email);
+
+        $result = $this->userCollection->findOne($query);
+
+        //False parce qu'on ne veut pas inscrire deux personnes pour la même e-mail
+        if($result) return FALSE;
+        else return TRUE;
+    }
 }
 ?>

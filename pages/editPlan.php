@@ -11,10 +11,7 @@ include '../header/header.php';
 if(isset($_GET['id']))
 {
     $id = $_GET['id'];
-    var_dump($id);
 }
-
-
 
 $planManager = new RefPlanPdoManager();
 

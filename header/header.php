@@ -37,5 +37,5 @@ else
         <meta charset="UTF-8">
         <title>Owl Eyes | Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <link rel="shortcut icon" href="/OwlEyes/img/icons/icons.png">
+        <link rel="shortcut icon" href="/OwlEyes/img/icons/icons.ico">
 

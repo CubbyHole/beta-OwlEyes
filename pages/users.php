@@ -115,6 +115,7 @@ include '../header/menu.php';
                             </thead>
                             <tbody>
                             <?php foreach($allUsers as $user):
+
                                 $account = $accountManager->findById($user->getCurrentAccount());
                                 $user = $account->getUser();
                                 $user = $usersManager->findById($user);

@@ -177,7 +177,7 @@ include '../header/menu.php';
         // Alerte de suppression d'un plan
         $( '.disablePlan' ).on( 'click', function( e )
         {
-            if( confirm( 'Voulez vous supprimer cette offre ?' ) )
+            if( confirm( 'You want to disabled this plan ?' ) )
                 return true;
 
             return false;

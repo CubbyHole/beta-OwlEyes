@@ -103,7 +103,7 @@ include '../header/menu.php';
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <input  name="edit_plan" class="btn btn-success" type="submit">
+                                    <input  name="edit_plan" class="btn btn-success" type="submit" value="OK">
                                 </div>
                             </div>
                         </form>
@@ -143,7 +143,7 @@ include '../header/menu.php';
         // Alerte de suppression d'un job
         $( '.disablePlan' ).on( 'click', function( e )
         {
-            if( confirm( 'Voulez vous supprimer cette offre ?' ) )
+            if( confirm( 'You want to disabled this plan ?' ) )
                 return true;
 
             return false;

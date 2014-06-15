@@ -65,8 +65,8 @@ if(isset($_POST['edit_user']))
 
     $updateFieldUser = array(
         '$set' => array(
-         'firstname' => _sanitize($firstname),
-            'lastname' => _sanitize($lastname),
+         'firstName' => _sanitize($firstname),
+            'lastName' => _sanitize($lastname),
             'password' => _sanitize($password),
             'email' => _sanitize($email),
             'geo' => _sanitize($geo),

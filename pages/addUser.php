@@ -122,7 +122,7 @@ include '../header/menu.php';
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <input  name="add_user" class="btn btn-success" type="submit">
+                                    <input  name="add_user" class="btn btn-success" type="submit" value="Add user">
                                 </div>
                             </div>
 

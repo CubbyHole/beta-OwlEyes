@@ -3411,18 +3411,11 @@ fieldset[disabled] .btn-vk.active {
 #logoOwl{
 
 }
-#contenuDash::after{
-    /*content: '';*/
-    /*background: url(/OwlEyes/img/owlEyes_logo.png) no-repeat;*/
-    /*height: 489px;*/
-    /*width: 350px;*/
-    /*position: absolute;*/
-    /* top: 316px; */
-
-     /*right: 1px;*/
-    /*opacity: 1;*/
-    /*-webkit-transform: scale(1.4) rotate(-55deg);*/
-    /*-moz-transform: scale(1.4) rotate(-55deg);*/
-    /*-o-transform: scale(1.4) rotate(-55deg);*/
-    /*transform: scale(1.4) rotate(-55deg);*/
+.infoUser{
+    color:#333!important;
+    cursor: pointer;
+}
+.infoUser:hover{
+    color: #9d2914 !important;
+    cursor: pointer;
 }

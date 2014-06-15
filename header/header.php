@@ -13,6 +13,7 @@ $userManager = new UserPdoManager();
 $planManager = new RefPlanPdoManager();
 $accountManager = new AccountPdoManager();
 
+
 if(isset($_SESSION['owleyesOK']))
 {
     $userSession = unserialize($_SESSION['owleyesOK']);

@@ -175,4 +175,12 @@ function _sanitize($data)
 
     return $clean_input;
 }
+/*
+ * Calcul le pourcentage d'un nombre
+ */
+function _percentage($nombre,$total,$pourcentage)
+{
+    $resultat = ($nombre/$total) * $pourcentage;
+    return round($resultat); // Arrondi la valeur
+}
 ?>

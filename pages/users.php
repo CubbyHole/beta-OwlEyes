@@ -120,12 +120,12 @@ include '../header/menu.php';
                                 $user = $usersManager->findById($user);
                                  ?>
                                 <?php if($account->getState() == 0): ?>
-                                    <tr style="background: #d9534f;">
+                                    <tr  style="background: #d9534f;">
                                 <?php elseif($user->getIsAdmin() == TRUE): ?>
-                                    <tr style="background: #b5d983;">
+                                    <tr  style="background: #b5d983;">
                                 <?php endif ?>
 
-                                <td class="infoName"><?= $user->getFirstName() ?></td>
+                                <td class="infoName"><a class="infoUser" href="infoUser.php?id=<?= $account->getId() ?>"><?= $user->getFirstName() ?></a></td>
                                 <td class="infoPrice"><?= $user->getLastName() ?></td>
                                 <td class="infoStorage"><?= $user->getEmail() ?></td>
                                 <td class="infoDL"><?= $user->getGeolocation() ?></td>
@@ -203,7 +203,13 @@ include '../header/menu.php';
                     {
                         "sExtends":    "collection",
                         "sButtonText": "Export",
-                        "aButtons":    [ "csv", "xls", "pdf", "print" ]
+                        "aButtons":    [
+                            "csv",
+                            "xls",
+                            "pdf",
+                            "print"
+
+                        ]
                     }
                 ]
             }
